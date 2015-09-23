@@ -1,0 +1,11 @@
+{
+  "name": "",
+  "description": "",
+  "version": "",
+  "scripts": {
+    "start": "node_modules/pm2/bin/pm2 start app.js"
+  },
+  "dependencies": {
+    "pm2": "*"
+  }
+}

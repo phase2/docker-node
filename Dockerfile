@@ -11,8 +11,8 @@ EXPOSE 80
 
 COPY root/ /
 
-ENV APP_PATH /opt/app
+ENV APP_PATH /code
 
-WORKDIR /opt
+WORKDIR /code
 
-CMD ["./app.sh"]
+CMD ["/app.sh"]
