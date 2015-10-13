@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-cd $APP_PATH && \
+cd /code && \
     npm install --no-bin-links && \
     npm start
