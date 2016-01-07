@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/with-contenv sh
 
 cd /code && \
     npm install --no-bin-links && \
