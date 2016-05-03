@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t phase2/nodejs4 .
+docker build -t phase2/node .
