@@ -1,6 +1,6 @@
 FROM phase2/servicebase:latest
 
-ENV NODE_VERSION=4.2.4
+ENV NODE_VERSION=4.7.2
 
 RUN yum -y update && \
     yum -y install gcc-c++ git \
