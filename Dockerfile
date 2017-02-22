@@ -1,6 +1,6 @@
-FROM phase2/servicebase:latest
+FROM outrigger/servicebase
 
-ENV NODE_VERSION=4.7.2
+ENV NODE_VERSION=4.8.0
 
 RUN yum -y update && \
     yum -y install gcc-c++ git \
