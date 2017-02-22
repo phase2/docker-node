@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t phase2/node .
+docker build -t outrigger/node .

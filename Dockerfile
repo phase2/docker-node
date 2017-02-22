@@ -1,7 +1,7 @@
-FROM phase2/servicebase:latest
+FROM outrigger/servicebase
 
-ENV NODE_VERSION=6.9.4
-ENV NPM_VERSION=3.10.9
+ENV NODE_VERSION=6.10.0
+ENV NPM_VERSION=3.10.10
 
 RUN curl https://dl.yarnpkg.com/rpm/yarn.repo > /etc/yum.repos.d/yarn.repo
 
