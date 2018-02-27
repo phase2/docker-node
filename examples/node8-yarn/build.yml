@@ -1,0 +1,33 @@
+##
+# This is a build container for the project.
+#
+# It has the same configuration as the Docker image used to build
+# the operational Docker image which could be used in production.
+##
+version: '3.3'
+
+services:
+  cli:
+    build: outrigger/node:8-build
+    entrypoint: /bin/bash
+    command: ""
+    environment:
+      HOSTING_PLATFORM: ${HOSTING_PLATFORM:-outrigger}
+      DOCKER_ENV: ${DOCKER_ENV:-local}
+      NODE_ENV: ${NODE_ENV:-development}
+    labels:
+      outrigger.project: dullahan
+    network_mode: bridge
+    # @todo revisit after https://github.com/phase2/rig/issues/135 is resolved.
+    user: root
+    volumes:
+      # Use Outrigger Filesync to maximize performance of build times.
+      # If you have issues with filesync and do not need file watches, please
+      # test the performance by replacing "dullahan-sync" with a period (.:/code)
+      - dullahan-sync:/code
+      # Persist tool caches. This covers yarn and npm.
+      - /data/dullahan/cache:/usr/local/share/.cache
+
+volumes:
+  dullahan-sync:
+    external: true

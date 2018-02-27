@@ -1,0 +1,3 @@
+# Exclude locally built dependencies when copying files into image.
+# node_modules from the local system are added to the container by volume mount.
+node_modules

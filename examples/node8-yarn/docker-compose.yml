@@ -1,0 +1,43 @@
+##
+# Operational services for node-demo-app.
+#
+# Running the app for demos, as a stable backing service to other work, or to
+# view a set of changes to custom code only:
+#
+# ```
+# # You may use --no-cache flag to force an image rebuild.
+# docker-compose -f docker-compose.yml up -d`
+# ```
+#
+# For development purposes where you need to run a WATCH command or
+# CHANGE DEPENDENCIES:
+#
+# ```
+# docker-compose up -d
+# ```
+#
+# @see docker-compose.override.yml for the more comprehensive "dev-mode"
+# configuration.
+##
+version: '3.3'
+
+services:
+
+  # The Node app.
+  api:
+    build: .
+    container_name: projectname_${DOCKER_ENV:-local}_api
+    environment:
+      HOSTING_PLATFORM: ${HOSTING_PLATFORM:-outrigger}
+      API_HOST: 0.0.0.0
+      API_PORT: 3773
+      API_DEBUG: ${API_DEBUG:-false}
+      # DOCKER_ENV represents a particular instance of the stack.
+      # DOCKER_ENV to NODE_ENV is a *:1 ratio.
+      DOCKER_ENV: ${DOCKER_ENV:-production}
+      NODE_ENV: ${NODE_ENV:-production}
+    labels:
+      com.dnsdock.name: api
+      com.dnsdock.image: projectname
+      outrigger.project: projectname
+    network_mode: bridge

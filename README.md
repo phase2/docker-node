@@ -5,15 +5,48 @@
 [![GitHub tag](https://img.shields.io/github/tag/phase2/docker-node.svg)](https://github.com/phase2/docker-node)
 [![Docker Stars](https://img.shields.io/docker/stars/outrigger/node.svg)](https://hub.docker.com/r/outrigger/node)
 [![Docker Pulls](https://img.shields.io/docker/pulls/outrigger/node.svg)](https://hub.docker.com/r/outrigger/node)
-[![](https://images.microbadger.com/badges/image/outrigger/node.svg)](https://microbadger.com/images/outrigger/node "Get your own image badge on microbadger.com")
+[![MicroBadger](https://images.microbadger.com/badges/image/outrigger/node.svg)](https://microbadger.com/images/outrigger/node "Get your own image badge on microbadger.com")
 
 For more documentation on how Outrigger images are constructed and how to work
 with them, please [see the documentation](http://docs.outrigger.sh/).
 
 ## Usage Example
 
+The examples in this repo use Yarn, but you can use npm as well.
+
+### Docker Run - Node REPL
+
+```bash
+docker run --rm -it outrigger/node:2-node8
 ```
-docker run -v ~/Project/node-app:/code outrigger/node
+
+### Docker Compose - Project-style
+
+For a more thorough example of how you would use outrigger/node:2-node8 or greater
+in a "real" project, check out ./examples.
+
+```yaml
+api: '3.4'
+services:
+  app:
+    image: outrigger/node:2-node8
+    container_name: projectname_app
+    command: "yarn install && yarn start"
+    labels:
+      com.dnsdock.name: app
+      com.dnsdock.image: projectname
+    network_mode: bridge
+    volumes:
+      - .:/code
+```
+
+### Node v4 and v6
+
+In the current version of Node v4 and v6, npm install and start routines are
+built-in to the image. This makes them more project-centric out of the box.
+
+```bash
+docker run -v ~/Project/node-app:/code outrigger/node:6
 ```
 
 ## Environment Variables
@@ -24,8 +57,27 @@ processed on startup with environment variables passed in via the docker run
 command-line or via your docker-compose manifest file. Here are the "tunable"
 configurations offered by this image.
 
+This only applies to Node v4 and v6 as examples of the implicit "Docker Image Version 1"
+variant of our docker-node implementation.
+
 * `SKIP_NPM_INSTALL`: If this is set (to anything) it will not run `npm install` when the container boots.
 
+## Version 1 vs. Version 2
+
+Version 1 of the outrigger/node images are implicit for Node v4 and v6.
+It is based on outrigger/servicebase, which provides a CentOS-base, s6 init system
+and confd configuration templating.
+
+Version 2 is explicitly tagged and created as part of adding v8 support.
+Version 2 is based on official Node images, specifically the Alpine variant, and
+adds special functionality on top. Currently that includes:
+
+* tini init system
+* Coordinated support for Yarn and npm
+* Run services as the `node` user instead of as `root`.
+
+As part of the implementation of version 2, we have switched to a simple templating
+mechanism to ease support for multiple node versions.
 
 ## Security Reports
 
