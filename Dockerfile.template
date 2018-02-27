@@ -17,7 +17,8 @@ ENV \
   # Build with NODE_ENV=development to include dev dependencies.
   NODE_ENV=production \
   # Align the npm cache with yarn for easier cache persistence by volumes.
-  NPM_CONFIG_CACHE=/usr/local/share/.cache/npm
+  NPM_CONFIG_CACHE=/usr/local/share/.cache/npm \
+  YARN_CACHE_FOLDER=/usr/local/share/.cache/yarn
 
 RUN mkdir /code && \
   mkdir -p /usr/local/share/.cache && \

@@ -23,7 +23,7 @@ The results of the templating process should be committed to the repository.
 ### Adding a New Node Version
 
 Create an empty directory named as the Node version number. It must be a version
-that matches the available alpine variants of https://hub.docker.com/_/node.
+that matches the available alpine variants of [the official node image](https://hub.docker.com/_/node).
 
 Run `./template.sh` to initialize the directory with a Docker image manifest.
 
