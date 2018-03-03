@@ -1,5 +1,11 @@
 FROM outrigger/servicebase
 
+LABEL maintainer="Phase2 <outrigger@phase2technology.com>" \
+  # Replacement for the old MAINTAINER directive has fragmented.
+  # "vendor" prevents CentOS from leaking through, the other is for tools integrations.
+  vendor="Phase2 <outrigger@phase2technology.com>" \
+  name="Node v4"
+
 ENV NODE_VERSION=4.8.0
 
 RUN yum -y update && \

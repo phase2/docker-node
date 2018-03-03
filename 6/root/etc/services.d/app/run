@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv sh
+
+cd /code
+
+[[ $SKIP_NPM_INSTALL ]] || {
+  echo "==> Install NPM dependencies"
+  npm install
+}
+
+echo "==> Starting node via npm start"
+exec npm start
