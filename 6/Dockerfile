@@ -4,10 +4,11 @@ LABEL maintainer="Phase2 <outrigger@phase2technology.com>" \
   # Replacement for the old MAINTAINER directive has fragmented.
   # "vendor" prevents CentOS from leaking through, the other is for tools integrations.
   vendor="Phase2 <outrigger@phase2technology.com>" \
-  name="Node v6"
+  name="Node v6" \
+  deprecated="2017-12-31"
 
-ENV NODE_VERSION=6.10.0
-ENV NPM_VERSION=3.10.10
+ENV NODE_VERSION=6.13.0
+ENV NPM_VERSION=3.10.9
 
 RUN curl https://dl.yarnpkg.com/rpm/yarn.repo > /etc/yum.repos.d/yarn.repo
 
