@@ -16,7 +16,7 @@ services:
       DOCKER_ENV: ${DOCKER_ENV:-local}
       NODE_ENV: ${NODE_ENV:-development}
     labels:
-      outrigger.project: dullahan
+      outrigger.project: projectname
     network_mode: bridge
     # @todo revisit after https://github.com/phase2/rig/issues/135 is resolved.
     user: root
@@ -24,10 +24,10 @@ services:
       # Use Outrigger Filesync to maximize performance of build times.
       # If you have issues with filesync and do not need file watches, please
       # test the performance by replacing "dullahan-sync" with a period (.:/code)
-      - dullahan-sync:/code
+      - projectname-sync:/code
       # Persist tool caches. This covers yarn and npm.
-      - /data/dullahan/cache:/usr/local/share/.cache
+      - /data/projectname/cache:/usr/local/share/.cache
 
 volumes:
-  dullahan-sync:
+  projectname-sync:
     external: true

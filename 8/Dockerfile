@@ -4,11 +4,8 @@ FROM node:8-alpine
 
 # @see http://label-schema.org/rc1/
 LABEL maintainer="Phase2 <outrigger@phase2technology.com>" \
-  # Replacement for the old MAINTAINER directive has fragmented.
-  # "vendor" prevents CentOS from leaking through, the other is for tools integrations.
-  vendor="Phase2 <projectname@phase2technology.com>" \
-  org.label-schema.vendor="Phase2 <projectname@phase2technology.com>" \
-  name="Node v8" \
+  org.label-schema.vendor="Phase2 <outrigger@phase2technology.com>" \
+  org.label-schema.name="Node v8" \
   org.label-schema.schema-version="1.0"
 
 # Operational node systems commonly need to make remote requests.

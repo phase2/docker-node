@@ -16,7 +16,7 @@ templating process.
 
 1. Make changes to the templates.
 2. Navigate to the repo root.
-3. Run `./template.sh` or `./template {version}`
+3. Run `./template.sh` or `./template.sh {version}`
 
 The results of the templating process should be committed to the repository.
 
