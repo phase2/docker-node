@@ -1,4 +1,4 @@
-FROM outrigger/node:8-build as builder
+FROM outrigger/node:8 as builder
 
 # Only perform the yarn install if package.json or the lockfile changes.
 # The insistence on asterisks for optional files prevents errors.
@@ -17,6 +17,7 @@ LABEL name="Project Name" \
   org.label-schema.name="Project Name" \
   org.label-schema.description="A description of this thing. Maybe look at your package.json." \
   org.label-schema.vcs-url="https://github.com/yourorg/projectname" \
+  org.label-schema.docker.cmd="docker run --rm -it yourorg/projectname /bin/bash"
   org.label-schema.schema-version="1.0"
 
 COPY --from=builder /code/node_modules /code/
