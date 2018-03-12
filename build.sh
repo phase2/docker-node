@@ -9,7 +9,7 @@ if [ $# -gt 0 ]; then
   buildDirs="$@"
 else
   # else, get all the relevant dirs
-  buildDirs=$(ls | grep -E '^[\d]+')
+  buildDirs=$(ls -1 | grep -E '^[\d]')
 fi
 
 # Build each one of them
